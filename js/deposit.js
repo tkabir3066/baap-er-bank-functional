@@ -16,6 +16,11 @@ function getElementValueById(elementId) {
 
   return elementValue;
 }
+
+function setElementValueById(elementId, newValue){
+const element = document.getElementById(elementId);
+const 
+}
 document.getElementById("btn-deposit").addEventListener("click", () => {
   /* 
 
@@ -25,5 +30,13 @@ document.getElementById("btn-deposit").addEventListener("click", () => {
   */
 
   const newDepositAmount = getInputFieldValueById("deposit-field");
-  const previousDepositTotalAmount = getElementValueById("deposit-total");
+
+  /* 
+  1. get previous deposit total byh id
+  */
+  const previousDepositTotal = getElementValueById("deposit-total");
+
+  // calculate new deposit total
+
+  const newDepositTotal = previousDepositTotal + newDepositAmount;
 });
