@@ -1,26 +1,3 @@
-function getInputFieldValueById(inputFieldId) {
-  const inputField = document.getElementById(inputFieldId);
-  const inputFieldValueString = inputField.value;
-  const inputFieldValue = parseFloat(inputFieldValueString);
-
-  // reset the input value
-
-  inputField.value = "";
-  return inputFieldValue;
-}
-
-function getElementValueById(elementId) {
-  const element = document.getElementById(elementId);
-  const elementValueString = element.innerText;
-  const elementValue = parseFloat(elementValueString);
-
-  return elementValue;
-}
-
-function setElementValueById(elementId, newValue){
-const element = document.getElementById(elementId);
-const 
-}
 document.getElementById("btn-deposit").addEventListener("click", () => {
   /* 
 
@@ -31,6 +8,10 @@ document.getElementById("btn-deposit").addEventListener("click", () => {
 
   const newDepositAmount = getInputFieldValueById("deposit-field");
 
+  if (isNaN(newDepositAmount)) {
+    alert("please provide a valid number");
+    return;
+  }
   /* 
   1. get previous deposit total byh id
   */
@@ -39,4 +20,12 @@ document.getElementById("btn-deposit").addEventListener("click", () => {
   // calculate new deposit total
 
   const newDepositTotal = previousDepositTotal + newDepositAmount;
+  setTextElementValueById("deposit-total", newDepositTotal);
+
+  // get the balance total
+
+  const previousBalanceTotal = getElementValueById("balance-total");
+  const currentBalanceTotal = previousBalanceTotal + newDepositAmount;
+
+  setTextElementValueById("balance-total", currentBalanceTotal);
 });
